@@ -29,4 +29,8 @@ class Index
         $this->task->deleteById($id);
         Route::redirect(Route::url('index', 'index'));
     }
+    public function edit(){
+        $id = filter_input(INPUT_POST, 'id');
+        $this->view->render('edit',['id'=>$id,]);
+    }
 }
