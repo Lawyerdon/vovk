@@ -1,8 +1,8 @@
 <?php
 namespace controllers;
-use View;
-use Task;
-use Route;
+use vendor\core\View;
+use vendor\db\Task;
+use vendor\db\Route;
 class Index
 {
     /**
