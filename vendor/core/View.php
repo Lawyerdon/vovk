@@ -4,11 +4,9 @@
 class View
 {
     private $template;
-    private $page;
 
-    public function __construct($page, $template = "default")
+    public function __construct($template = "default")
     {
-        $this->page = $page;
         $this->template = $template;
     }
 
