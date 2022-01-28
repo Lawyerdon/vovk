@@ -25,6 +25,8 @@ class Index
         $this->view->render('create');
     }
     public function store(){
-
+        $id = filter_input(INPUT_POST, 'id');
+        $this->task->deleteById($id);
+        Route::redirect(Route::url('index', 'index'));
     }
 }
