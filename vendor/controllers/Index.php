@@ -19,7 +19,8 @@ class Index
         $this->view = new View('default');
     }
     public function index(){
-        $this->view->render('index',['tasks'=>$this->task]);
+//        $this->view->render('index',['tasks'=>$this->task]);
+          $this->task->all();
     }
     public function create(){
         $this->view->render('create');
@@ -40,7 +41,7 @@ class Index
     }
     public function update(){
         $id = filter_input(INPUT_POST, 'id');
-        $this->task->updateById($id);
+        $this->task->changeById($id);
         Route::redirect(Route::url('index','index'));
     }
 }
