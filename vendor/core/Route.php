@@ -30,10 +30,10 @@ class Route
     }
     static public function redirect($url = null)
     {
-        if(!isset($url)) {
+        if(isset($url)) {
             return $url;
         } else {
-            return $_SERVER['PHP_SELF'];
+            $_SERVER['PHP_SELF'];
         }
         header('Location:'.$url);
     }
