@@ -26,11 +26,21 @@ class Index
     }
     public function store(){
         $id = filter_input(INPUT_POST, 'id');
-        $this->task->deleteById($id);
+        $this->task->addById($id);
         Route::redirect(Route::url('index', 'index'));
     }
     public function edit(){
         $id = filter_input(INPUT_POST, 'id');
-        $this->view->render('edit',['id'=>$id,]);
+        $this->view->render('edit',['id'=>$id]);
+    }
+    public function delete(){
+        $id = filter_input(INPUT_POST, 'id');
+        $this->task->deleteById($id);
+        Route::redirect(Route::url('index','index'));
+    }
+    public function update(){
+        $id = filter_input(INPUT_POST, 'id');
+        $this->task->updateById($id);
+        Route::redirect(Route::url('index','index'));
     }
 }
