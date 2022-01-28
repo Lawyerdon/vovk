@@ -15,7 +15,7 @@ class Route
         if(!empty($URIs[1])) {
             $actionName = mb_strtolower($URIs[1]);
         }
-        $controllerClassName = '\controllers\\'.$controllerName.'Controller';
+        $controllerClassName = '\controllers\\'.$controllerName;
         var_dump($controllerClassName);
 
         if(!class_exists($controllerClassName)) {
