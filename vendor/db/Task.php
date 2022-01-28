@@ -8,7 +8,7 @@ class Task
 
     public function __construct()
     {
-        $connect = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        $this->connect = new \mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     }
 
     public function all()
