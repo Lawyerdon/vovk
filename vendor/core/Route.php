@@ -17,12 +17,9 @@ class Route
             $actionName = mb_strtolower($URIs[1]);
         }
         $controllerClassName = '\controllers\\'.$controllerName;
-        var_dump($controllerClassName);
-
         if(!class_exists($controllerClassName)) {
             self::error404();
         }
-
         $controller = new $controllerClassName();
         if(!method_exists($controller, $actionName)) {
             self::error404();

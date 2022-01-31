@@ -1,6 +1,6 @@
-<form action="<?php Route::url("index", "edit"); ?>" method="post">
+<form action="<?= core\Route::url("index", "update"); ?>" method="post">
     <label for="article">Article:</label>
-    <input type="text" name="article" value="<?= $task["article"] ?>" id="article" autofocus/>
+    <textarea name="name"> <?= $task['name'] ?> </textarea>
     <input type="hidden" name="id" value="<?= $task["id"] ?>"/>
     <input type="submit" value="Change value"/>
 </form>
