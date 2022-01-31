@@ -17,7 +17,7 @@ class Task
             exit($this->connect->connect_error);
         }
 
-        $query = "SELECT * FROM tasks;";
+        $query = "SELECT * FROM task;";
         $result = $this->connect->query($query);
 
         if (!$result) {
@@ -30,8 +30,37 @@ class Task
         return $tasks;
     }
 
-    public function add()
+    public function add($name)
     {
+        $query = "INSERT INTO `task` (`id`, `name`) VALUES (NULL, '$name');";
+
+        $this->connect->query($query);
+
+    }
+
+    public function change($id, $name)
+    {
+        $query = "UPDATE `task` SET `name` = '$name' WHERE `task`.`id` = $id;";
+
+        $this->connect->query($query);
+    }
+
+    public function delete($id)
+    {
+        $query = "DELETE FROM `task` WHERE `task`.`id` = $id";
+
+        $this->connect->query($query);
+    }
+
+    public  function getItem($id)
+    {
+      $query = "SELECT * FROM `task` WHERE task.id =$id";
+
+      $result = $this->connect->query($query);
+
+      $task = $result->fetch_assoc();
+
+      return $task;
 
     }
 
