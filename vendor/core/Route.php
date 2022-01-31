@@ -31,11 +31,7 @@ class Route
     }
     static public function redirect($url = null)
     {
-        if(isset($url)) {
-            return $url;
-        } else {
-            $_SERVER['PHP_SELF'];
-        }
+        $url = $url ?? $_SERVER['PHP_SELF'];
         header('Location:'.$url);
     }
     static public function url($controllerName = 'index', $actionName = 'index')
