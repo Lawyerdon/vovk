@@ -17,7 +17,7 @@ class Task
             exit($this->connect->connect_error);
         }
 
-        $query = "SELECT * FROM tasks;";
+        $query = "SELECT * FROM task;";
         $result = $this->connect->query($query);
 
         if (!$result) {
@@ -30,35 +30,38 @@ class Task
         return $tasks;
     }
 
-    public function add($id = null)
+    public function add($name)
     {
-        $article = $this->Articles->get($id);
-        if ($this->request->is(['post', 'put'])) {
-            $this->Articles->patchEntity($article, $this->request->getData());
-            if ($this->Articles->save($article)) {
-                $this->Flash->success(__('Ваша статья была обновлена.'));
-                return $this->redirect(['vendor' => 'index']);
-            }
-            $this->Flash->error(__('Ошибка обновления вашей статьи.'));
-        }
+        $query = "INSERT INTO `task` (`id`, `name`) VALUES (NULL, '$name');";
 
-        $this->set('article', $article);
+        $this->connect->query($query);
+
+    }
+
+    public function change($id, $name)
+    {
+        $query = "UPDATE `task` SET `name` = '$name' WHERE `task`.`id` = $id;";
+
+        $this->connect->query($query);
     }
 
     public function delete($id)
     {
-        $this->request->allowMethod(['post', 'delete']);
+        $query = "DELETE FROM `task` WHERE `task`.`id` = $id";
 
-        $article = $this->Articles->get($id);
-        if ($this->Articles->delete($article)) {
-            $this->Flash->success(__('Статья с id: {0} была удалена.', h($id)));
-            return $this->redirect(['vendor' => 'index']);
-        }
+        $this->connect->query($query);
     }
 
     public  function getItem($id)
     {
-        return array($id);
+      $query = "SELECT * FROM `task` WHERE task.id =$id";
+
+      $result = $this->connect->query($query);
+
+      $task = $result->fetch_assoc();
+
+      return $task;
+
     }
 
 }
