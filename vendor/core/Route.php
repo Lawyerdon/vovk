@@ -34,9 +34,9 @@ class Route
         $url = $url ?? $_SERVER['PHP_SELF'];
         header('Location:'.$url);
     }
-    static public function url($controllerName = 'index', $actionName = 'index')
+    static public function url($controller = 'index', $action = 'index')
     {
-        return '/'.$controllerName.'/'.$actionName;
+        return '/'.$controller.'/'.$action;
     }
     static public function error404() {
         http_response_code(404);
