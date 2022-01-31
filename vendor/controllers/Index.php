@@ -19,28 +19,29 @@ class Index
         $this->view = new View('default');
     }
     public function index(){
-       $this->view->render('index',['tasks'=>$this->task->all()]);
+       $this->view->render('tasks',['tasks'=>$this->task->all()]);
     }
     public function create(){
         $this->view->render('create');
     }
     public function store(){
-        $id = filter_input(INPUT_POST, 'id');
-        $this->task->addById($id);
+        $task = filter_input(INPUT_POST, 'task');
+        $this->task->add($task);
         Route::redirect(Route::url('index', 'index'));
     }
     public function edit(){
         $id = filter_input(INPUT_POST, 'id');
-        $this->view->render('edit',['id'=>$id]);
+        $this->getItem($id);
+        $this->view->render('edit',['tasks'=>$this->task->getItem($id)]);
     }
     public function delete(){
         $id = filter_input(INPUT_POST, 'id');
-        $this->task->deleteById($id);
+        $this->task->delete($id);
         Route::redirect(Route::url('index','index'));
     }
-    public function update(){
+    public function update($name){
         $id = filter_input(INPUT_POST, 'id');
-        $this->task->changeById($id, $name);
+        $this->task->change($id, $name);
         Route::redirect(Route::url('index','index'));
     }
 }
