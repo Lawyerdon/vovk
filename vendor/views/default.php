@@ -9,7 +9,7 @@
 </head>
 <body>
     <div>
-        <?php include_once "vendor" . DIRECTORY_SEPARATOR . "views" . DIRECTORY_SEPARATOR . $this->page . ".php"; ?>
+        <?php include_once $page . "_page.php"; ?>
     </div>
 </body>
 </html>
