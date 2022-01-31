@@ -30,9 +30,35 @@ class Task
         return $tasks;
     }
 
-    public function add()
+    public function add($id = null)
     {
+        $article = $this->Articles->get($id);
+        if ($this->request->is(['post', 'put'])) {
+            $this->Articles->patchEntity($article, $this->request->getData());
+            if ($this->Articles->save($article)) {
+                $this->Flash->success(__('Ваша статья была обновлена.'));
+                return $this->redirect(['vendor' => 'index']);
+            }
+            $this->Flash->error(__('Ошибка обновления вашей статьи.'));
+        }
 
+        $this->set('article', $article);
+    }
+
+    public function delete($id)
+    {
+        $this->request->allowMethod(['post', 'delete']);
+
+        $article = $this->Articles->get($id);
+        if ($this->Articles->delete($article)) {
+            $this->Flash->success(__('Статья с id: {0} была удалена.', h($id)));
+            return $this->redirect(['vendor' => 'index']);
+        }
+    }
+
+    public  function getItem($id)
+    {
+        return array($id);
     }
 
 }
