@@ -1,0 +1,18 @@
+#edit, #create{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(142,138,137,0.55);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+}
+#edit form, #create form{
+    width: 40%;
+    padding: 10px;
+    background-color: #fff9f7;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    margin: 40px auto 0;
+}
