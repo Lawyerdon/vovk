@@ -22,7 +22,7 @@ class Task
 
         if (!$result) {
             //TODO log of error
-            return null;
+            return [];
         }
 
         $tasks = $result->fetch_all(MYSQLI_ASSOC);
