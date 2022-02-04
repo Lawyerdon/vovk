@@ -7,7 +7,11 @@ use mysqli;
 
 class News
 {
+    /**
+     * @var mysqli
+     */
     private $connect;
+
     protected $table = 'news';
 
     public function __construct()

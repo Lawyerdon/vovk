@@ -14,7 +14,7 @@ class News extends AbstractController
     public function index(){
         $this->view->render('index_'.self::controllerName());
     }
-
+    //API actions
     public function all(){
         header('Content-Type: application/json');
         echo json_encode($this->model->all());
@@ -31,17 +31,23 @@ class News extends AbstractController
         }
     }
 
+    public function delete(){
+        $id = filter_input(INPUT_POST, 'id');
+        $this->model->delete($id);
+        if($this->model->delete($id)) {
+            http_response_code(200);
+        } else {
+            http_response_code(520);
+        }
+    }
+
     public function edit(){
         $id=filter_input(INPUT_POST,'id');
         $this->model->getItem($id);
         $this->view->render('edit_'.self::controllerName(),['task'=> $this->model->getItem($id)]);
     }
 
-    public function delete(){
-        $id = filter_input(INPUT_POST, 'id');
-        $this->model->delete($id);
-        Route::redirect(Route::url(self::controllerName(),'index'));
-    }
+
 
     public function update(){
         $id = filter_input(INPUT_POST, 'id');
