@@ -51,8 +51,9 @@ class News extends AbstractController
 
     public function update(){
         $id = filter_input(INPUT_POST, 'id');
-        $name =filter_input(INPUT_POST,'name');
-        $this->model->change($id, $name);
+        $title = filter_input(INPUT_POST,'title');
+        $text = filter_input(INPUT_POST,'$text');
+        $this->model->change($id, $title, $text);
         Route::redirect(Route::url(self::controllerName(),'index'));
     }
 

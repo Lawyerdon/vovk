@@ -1,6 +1,6 @@
 <?php
 
-include_once 'config.php';
+include_once 'config.example.php';
 
 spl_autoload_register(function ($className) {
     $classFile = 'vendor' . DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';

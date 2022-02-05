@@ -50,9 +50,9 @@ class News
         return $this->connect->query($query);
     }
 
-    public function change(int $id,string $name)
+    public function change(int $id,string $title, $text)
     {
-        $query = "UPDATE {$this->table} SET name = '$name' WHERE id = $id;";
+        $query = "UPDATE {$this->table} SET title = '$title', text = '$text' WHERE id = $id;";
         return $this->connect->query($query);
     }
 
@@ -69,5 +69,4 @@ class News
         $task = $result->fetch_assoc();
         return $task;
     }
-
 }

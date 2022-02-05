@@ -24,7 +24,7 @@
     </form>
 </div>
 <div id="edit">
-    <form name="edit">
+    <form name="edit" id="edit-form">
         <input type="hidden" name="id">
         <label for="title">Title:</label>
         <input type="text" name="title" id="title"/>
