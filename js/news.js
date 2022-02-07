@@ -112,26 +112,6 @@ document.forms.create.onsubmit = function(event){
     event.preventDefault();
 };
 
-// document.querySelector('#edit-form').addEventListener('submit', e => {
-//     let data = new FormData(this);
-//
-//     let xhr = new XMLHttpRequest();
-//     xhr.onreadystatechange = function() {
-//         if(this.readyState === 4){
-//             if(this.status === 200){
-//                 alert('News created');
-//                 fillTable();
-//             }else{
-//                 alert('Some problems at server');
-//             }
-//         }
-//     }
-//     xhr.open('POST', '/news/store');
-//     xhr.send(data);
-//     e.target.parentElement.style.display = 'none';
-//     e.preventDefault();
-// })
-
 document.querySelector('#edit-form').onsubmit = function(event){
     let data = new FormData(this);
     let xhr = new XMLHttpRequest();
